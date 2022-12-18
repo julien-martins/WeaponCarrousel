@@ -47,7 +47,7 @@ public struct Weapon {
     public float weaponDamage;
     public float weaponPenetration;
     public float weaponSpeed;
-    public WeaponDurability weaponDurability;
+    public int weaponDurability;
     
 }
 

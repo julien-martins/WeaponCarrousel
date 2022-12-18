@@ -24,7 +24,7 @@ MonoBehaviour:
     weaponDamage: 20
     weaponPenetration: 0
     weaponSpeed: 5
-    weaponDurability: 2
+    weaponDurability: 100
   - weaponName: Gold Axe
     weaponSprite: {fileID: 88614238, guid: 50bae22da9054f94db5f70c2e2e78934, type: 3}
     weaponPrice: 300
@@ -36,7 +36,7 @@ MonoBehaviour:
     weaponDamage: 10
     weaponPenetration: 0
     weaponSpeed: 5
-    weaponDurability: 2
+    weaponDurability: 50
   - weaponName: Trident
     weaponSprite: {fileID: 35193232, guid: 50bae22da9054f94db5f70c2e2e78934, type: 3}
     weaponPrice: 500
@@ -48,4 +48,4 @@ MonoBehaviour:
     weaponDamage: 50
     weaponPenetration: 0
     weaponSpeed: 3
-    weaponDurability: 0
+    weaponDurability: 10

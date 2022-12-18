@@ -22,8 +22,13 @@ public class WeaponVisualizer : MonoBehaviour
     [SerializeField] private Text rangeValue;
     [SerializeField] private Text priceValue;
     [SerializeField] private Text weightValue;
+    [SerializeField] private Text speedValue;
+    [SerializeField] private Text speedStatValue;
     [SerializeField] private Text damageValue;
+    [SerializeField] private Text damageStatValue;
     [SerializeField] private Text equipedValue;
+    [SerializeField] private Text durabilityStr;
+    [SerializeField] private Text durabilityNbr;
 
     private int indexCarousel;
 
@@ -58,18 +63,50 @@ public class WeaponVisualizer : MonoBehaviour
         var (rarityName, rarityColor) = RarityNameAndColor(currentWeapon.weaponRarity);
         rarityValue.text = rarityName;
        
-        rangeValue.color = rarityColor;
-
         typeValue.text = TypeName(currentWeapon.weaponType);
-       
-        rangeValue.text = RangeName(currentWeapon.weaponRange);
-
+        
         priceValue.text = currentWeapon.weaponPrice + " PO";
         priceValue.color = Color.yellow;
 
         weightValue.text = currentWeapon.weaponWeight + " Kg";
 
+        rangeValue.text = RangeName(currentWeapon.weaponRange);
+        rangeValue.color = rarityColor;
+
         damageValue.text = currentWeapon.weaponDamage.ToString();
+        var damageDiff = (currentWeapon.weaponDamage - equipedWeapon.weaponDamage);
+        if(damageDiff > 0){
+            damageStatValue.text = "+ ";
+            damageStatValue.text += Mathf.Abs(damageDiff).ToString();
+            damageStatValue.color = Color.green;
+        } else if(damageDiff < 0){
+            damageStatValue.text = "- ";
+            damageStatValue.text += Mathf.Abs(damageDiff).ToString();
+            damageStatValue.color = Color.red;
+        } else{
+            damageStatValue.text = "";
+        }
+        
+
+        speedStatValue.text = currentWeapon.weaponSpeed.ToString();
+        var speedDiff = (currentWeapon.weaponSpeed - equipedWeapon.weaponSpeed);
+        if(speedDiff > 0){
+            speedStatValue.text = "+ ";
+            speedStatValue.text += Mathf.Abs(speedDiff).ToString();
+            speedStatValue.color = Color.green;
+        } else if (speedDiff < 0){
+            speedStatValue.text = "- ";
+            speedStatValue.text += Mathf.Abs(speedDiff).ToString();
+            speedStatValue.color = Color.red;
+        } else {
+            speedStatValue.text = "";
+        }
+        
+
+        var (duraStr, duraColor) = DurabilityNameAndColor(currentWeapon.weaponDurability);
+        durabilityStr.text = duraStr;
+        durabilityNbr.text = currentWeapon.weaponDurability.ToString();
+        durabilityNbr.color = duraColor;
 
         if(currentWeapon.weaponName == equipedWeapon.weaponName)
             equipedValue.text = "Equipe";
@@ -81,7 +118,7 @@ public class WeaponVisualizer : MonoBehaviour
     public void NextWeapon(){
         indexCarousel++;
 
-        if(indexCarousel > allWeaponData.weapons.Count-1){
+        if(indexCarousel > allWeaponData.weapons.Count - 1){
             indexCarousel =  0;
         }
         if(indexCarousel < 0){
@@ -144,18 +181,22 @@ public class WeaponVisualizer : MonoBehaviour
     }
 
     //Return the name and the color to WeaponDurability param
-    public (string, Color) DurabilityNameAndColor(WeaponDurability durability){
-        switch(durability){
-            case WeaponDurability.Unsused:
-                return ("Neuf", Color.green);
-            case WeaponDurability.Used:
-                return ("Usee", Color.yellow);
-            case WeaponDurability.VeryUsed:
-                return ("Tres usee", orange);
-            case WeaponDurability.Brittle:
-                return ("Fragile", Color.red);
-            case WeaponDurability.Broken:
-                return ("Casee", Color.gray);
+    public (string, Color) DurabilityNameAndColor(int durability){
+
+        if(durability <= 100 && durability >= 80){
+            return ("Neuf", Color.green);
+        }
+        else if(durability <= 79 && durability >= 49){
+            return ("Usee", Color.yellow);
+        }
+        else if(durability <= 48 && durability >= 15){
+            return ("Tres Usee", orange);
+        }
+        else if(durability <= 14 && durability >= 1){
+            return ("Fragile", Color.red);
+        }
+        else if(durability == 0){
+            return ("Casee", Color.gray);
         }
 
         return ("None", Color.white);
