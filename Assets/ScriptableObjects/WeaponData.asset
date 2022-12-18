@@ -13,27 +13,39 @@ MonoBehaviour:
   m_Name: WeaponData
   m_EditorClassIdentifier: 
   weapons:
-  - weaponName: 
-    weaponSprite: {fileID: 0}
-    weaponPrice: 0
+  - weaponName: Fire Sword
+    weaponSprite: {fileID: 1594486026, guid: 50bae22da9054f94db5f70c2e2e78934, type: 3}
+    weaponPrice: 150
     weaponTier: 0
+    weaponRarity: 1
+    weaponType: 0
+    weaponRange: 0
+    weaponWeight: 1.2
+    weaponDamage: 20
+    weaponPenetration: 0
+    weaponSpeed: 5
+    weaponDurability: 2
+  - weaponName: Gold Axe
+    weaponSprite: {fileID: 88614238, guid: 50bae22da9054f94db5f70c2e2e78934, type: 3}
+    weaponPrice: 300
+    weaponTier: 1
     weaponRarity: 0
     weaponType: 0
     weaponRange: 0
-    weaponWeight: 0
-    weaponDamage: 0
+    weaponWeight: 2
+    weaponDamage: 10
     weaponPenetration: 0
-    weaponSpeed: 0
-    weaponDurability: 0
-  - weaponName: 
-    weaponSprite: {fileID: 0}
-    weaponPrice: 0
-    weaponTier: 0
-    weaponRarity: 0
+    weaponSpeed: 5
+    weaponDurability: 2
+  - weaponName: Trident
+    weaponSprite: {fileID: 35193232, guid: 50bae22da9054f94db5f70c2e2e78934, type: 3}
+    weaponPrice: 500
+    weaponTier: 1
+    weaponRarity: 2
     weaponType: 0
-    weaponRange: 0
-    weaponWeight: 0
-    weaponDamage: 0
+    weaponRange: 1
+    weaponWeight: 2
+    weaponDamage: 50
     weaponPenetration: 0
-    weaponSpeed: 0
+    weaponSpeed: 3
     weaponDurability: 0
